@@ -1,0 +1,21 @@
+# logstash.yml
+
+http.host: "0.0.0.0"
+xpack.monitoring.enabled: true
+
+# Filebeat input configuration
+input {
+  beats {
+    port => "5044"
+  }
+}
+
+# Elasticsearch output configuration
+output {
+  elasticsearch {
+    hosts => ["http://localhost:9200"]
+    index => "logstash-%{+YYYY.MM.dd}"
+  }
+}
+
+
