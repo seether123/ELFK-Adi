@@ -18,4 +18,5 @@ output {
   }
 }
 
+./logstash -e 'input {tcp {port => 5044}} output {elasticsearch {hosts => ["localhost:9200"]}}'
 
