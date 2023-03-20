@@ -23,3 +23,7 @@ spec:
         - name: myapp-config-volume
           configMap:
             name: myapp-config
+            
+            
+ kubectl create configmap myapp-config --from-env-file=.env.sit
+
