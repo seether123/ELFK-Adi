@@ -20,3 +20,6 @@ output {
 
 ./logstash -e 'input {tcp {port => 5044}} output {elasticsearch {hosts => ["localhost:9200"]}}'
 ./logstash -e 'input {tcp {port => 5044}} output {elasticsearch {hosts => ["localhost:9200"] index => "filebeat"}}'
+
+sed -i 's/ARG BUIlD_ENV=[a-zA-Z]*/ARG BUIlD_ENV=prod/g' Dockerfile
+
