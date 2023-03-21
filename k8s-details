@@ -27,3 +27,27 @@ spec:
             
  kubectl create configmap myapp-config --from-env-file=.env.sit
 
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-app
+          image: my-app-image:latest
+          envFrom:
+            - configMapRef:
+                name: my-app-config-sit # Change this to my-app-config-dev for the dev environment
+          ports:
+            - containerPort: 80
+
